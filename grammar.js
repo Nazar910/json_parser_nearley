@@ -10,7 +10,18 @@ var grammar = {
     {"name": "jsonValue", "symbols": ["string"]},
     {"name": "jsonValue", "symbols": ["boolean"]},
     {"name": "jsonValue", "symbols": ["number"]},
-    {"name": "object", "symbols": [{"literal":"{"}, "string", {"literal":":"}, "jsonValue", {"literal":"}"}], "postprocess": ([,key,,value]) => ({ [key]: value[0] })},
+    {"name": "object$ebnf$1", "symbols": []},
+    {"name": "object$ebnf$1$subexpression$1", "symbols": [{"literal":","}, "string", {"literal":":"}, "jsonValue"]},
+    {"name": "object$ebnf$1", "symbols": ["object$ebnf$1", "object$ebnf$1$subexpression$1"], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "object", "symbols": [{"literal":"{"}, "string", {"literal":":"}, "jsonValue", "object$ebnf$1", {"literal":"}"}], "postprocess":  ([,key,,value, additionaKeyPairs]) => {
+            const obj = { [key]: value[0] };
+        
+            if (additionaKeyPairs) {
+                additionaKeyPairs.forEach(([,k,,v]) => obj[k] = v[0]);
+            }
+        
+            return obj;
+        } },
     {"name": "array", "symbols": [{"literal":"["}, "jsonValue", {"literal":"]"}], "postprocess": ([,val]) => val},
     {"name": "string$ebnf$1", "symbols": []},
     {"name": "string$ebnf$1", "symbols": ["string$ebnf$1", /[a-zA-Z0-9]/], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},

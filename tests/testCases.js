@@ -6,6 +6,13 @@ const testCases = [
         }
     },
     {
+        jsonStr: '{"foo1":"bar1","foo2":"bar2"}',
+        expected: {
+            foo1: 'bar1',
+            foo2: 'bar2',
+        }
+    },
+    {
         jsonStr: '"foo"',
         expected: 'foo'
     },

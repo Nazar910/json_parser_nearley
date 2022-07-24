@@ -1,6 +1,14 @@
 jsonValue -> object | array | string | boolean | number
 
-object -> "{" string ":" jsonValue "}" {% ([,key,,value]) => ({ [key]: value[0] }) %}
+object -> "{" string ":" jsonValue ("," string ":" jsonValue):* "}" {% ([,key,,value, additionaKeyPairs]) => {
+    const obj = { [key]: value[0] };
+
+    if (additionaKeyPairs) {
+        additionaKeyPairs.forEach(([,k,,v]) => obj[k] = v[0]);
+    }
+
+    return obj;
+} %}
 
 array -> "[" jsonValue "]" {% ([,val]) => val %}
 
