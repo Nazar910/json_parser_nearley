@@ -1,7 +1,7 @@
 # json_parser_nearley
 MVP to see how easy simple JSON parser can be created using [nearley](https://nearley.js.org/).
-Of course this parser is implemented for educational reasons and may no implement full JSON spec.
-BTW if you're interested there's also JSON parser grammar in [nearley repo](https://github.com/kach/nearley/blob/master/examples/json.ne)
+Of course, this parser is implemented for educational reasons and may not implement full JSON spec.
+BTW, if you're interested there's also JSON parser grammar in [nearley repo](https://github.com/kach/nearley/blob/master/examples/json.ne)
 
 # Prerequisites:
 * understanding of [ebnf](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) form (used to describe grammar of your custom language)
