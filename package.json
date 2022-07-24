@@ -1,0 +1,24 @@
+{
+  "name": "json_parser_nearley",
+  "version": "1.0.0",
+  "description": "MVP to see how easy JSON parser can be created using `nearley`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:nearley": "nearleyc grammar.ne -o grammar.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nazar910/json_parser_nearley.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nazar910/json_parser_nearley/issues"
+  },
+  "homepage": "https://github.com/Nazar910/json_parser_nearley#readme",
+  "dependencies": {
+    "nearley": "^2.20.1"
+  }
+}
