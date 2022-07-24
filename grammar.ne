@@ -1,3 +1,3 @@
 root -> object
 
-object -> "{" "\"" "foo" "\"" ":" "\"" "bar" "\"" "}"
+object -> "{" "\"" [a-zA-Z]:+ "\"" ":" "\"" [a-zA-Z]:+ "\"" "}" {% ([,,key,,,,value]) => ({ [key.join('')]: value.join('') }) %}

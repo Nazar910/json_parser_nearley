@@ -6,9 +6,11 @@ var grammar = {
     Lexer: undefined,
     ParserRules: [
     {"name": "root", "symbols": ["object"]},
-    {"name": "object$string$1", "symbols": [{"literal":"f"}, {"literal":"o"}, {"literal":"o"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "object$string$2", "symbols": [{"literal":"b"}, {"literal":"a"}, {"literal":"r"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "object", "symbols": [{"literal":"{"}, {"literal":"\""}, "object$string$1", {"literal":"\""}, {"literal":":"}, {"literal":"\""}, "object$string$2", {"literal":"\""}, {"literal":"}"}]}
+    {"name": "object$ebnf$1", "symbols": [/[a-zA-Z]/]},
+    {"name": "object$ebnf$1", "symbols": ["object$ebnf$1", /[a-zA-Z]/], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "object$ebnf$2", "symbols": [/[a-zA-Z]/]},
+    {"name": "object$ebnf$2", "symbols": ["object$ebnf$2", /[a-zA-Z]/], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
+    {"name": "object", "symbols": [{"literal":"{"}, {"literal":"\""}, "object$ebnf$1", {"literal":"\""}, {"literal":":"}, {"literal":"\""}, "object$ebnf$2", {"literal":"\""}, {"literal":"}"}], "postprocess": ([,,key,,,,value]) => ({ [key.join('')]: value.join('') })}
 ]
   , ParserStart: "root"
 }
