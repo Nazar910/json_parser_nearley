@@ -8,3 +8,4 @@ MVP to see how easy JSON parser can be created using [nearley](https://nearley.j
 # Getting started
 * npm install
 * npm test - to check that all units are passing
+should see smth ![image](https://user-images.githubusercontent.com/19594637/180640252-f9390716-51f9-4a8c-a6c4-bf37270d04a0.png)
