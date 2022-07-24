@@ -1,6 +1,6 @@
 jsonValue -> object | array | string | boolean | number
 
-object -> "{" "\"" [a-zA-Z]:+ "\"" ":" jsonValue "}" {% ([,,key,,,value]) => ({ [key.join('')]: value[0] }) %}
+object -> "{" "\"" [a-zA-Z]:* "\"" ":" jsonValue "}" {% ([,,key,,,value]) => ({ [key.join('')]: value[0] }) %}
 
 array -> "[" jsonValue "]" {% ([,val]) => [val] %}
 
