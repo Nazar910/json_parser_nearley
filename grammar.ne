@@ -10,4 +10,4 @@ boolean -> "true" {% () => true %} |
     "false" {% () => false %}
 
 number -> [0-9] {% d => Number(d[0]) %} |
-    [1-9] [0-9]:+ {% d => d %}
+    [1-9] [0-9]:+ {% d => Number([d[0], ...d[1]].join('')) %}

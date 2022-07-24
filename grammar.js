@@ -22,7 +22,7 @@ var grammar = {
     {"name": "number", "symbols": [/[0-9]/], "postprocess": d => Number(d[0])},
     {"name": "number$ebnf$1", "symbols": [/[0-9]/]},
     {"name": "number$ebnf$1", "symbols": ["number$ebnf$1", /[0-9]/], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
-    {"name": "number", "symbols": [/[1-9]/, "number$ebnf$1"], "postprocess": d => d}
+    {"name": "number", "symbols": [/[1-9]/, "number$ebnf$1"], "postprocess": d => Number([d[0], ...d[1]].join(''))}
 ]
   , ParserStart: "jsonValue"
 }

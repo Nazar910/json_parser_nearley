@@ -20,6 +20,10 @@ const testCases = [
         expected: 1
     },
     {
+        jsonStr: '123',
+        expected: 123
+    },
+    {
         jsonStr: 'true',
         expected: true
     },
