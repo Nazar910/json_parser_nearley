@@ -7,7 +7,7 @@ function generateTestCases(cases) {
     for (const testCase of cases) {
         it(testCase.jsonStr, () => {
             const actual = parse(testCase.jsonStr);
-            assert.deepStrictEqual(actual, testCase.expectedObj);
+            assert.deepStrictEqual(actual, testCase.expected);
         });
     }
 }
