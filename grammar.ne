@@ -1,3 +1,13 @@
-root -> object
+jsonValue -> object | array | string | boolean | number
 
-object -> "{" "\"" [a-zA-Z]:+ "\"" ":" "\"" [a-zA-Z]:+ "\"" "}" {% ([,,key,,,,value]) => ({ [key.join('')]: value.join('') }) %}
+object -> "{" "\"" [a-zA-Z]:+ "\"" ":" jsonValue "}" {% ([,,key,,,value]) => ({ [key.join('')]: value[0] }) %}
+
+array -> "[" jsonValue "]" {% ([,val]) => [val] %}
+
+string -> "\"" [a-zA-Z]:* "\"" {% ([,str]) => str.join('') %}
+
+boolean -> "true" {% () => true %} |
+    "false" {% () => false %}
+
+number -> [0-9] {% d => d %} |
+    [1-9] [0-9]:+ {% d => d %}
