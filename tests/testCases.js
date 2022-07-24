@@ -27,6 +27,12 @@ const testCases = [
         jsonStr: 'false',
         expected: false
     },
+    {
+        jsonStr: '{"foo123":"bar321"}',
+        expected: {
+            foo123: 'bar321'
+        }
+    },
 ];
 
 module.exports = { testCases };

@@ -1,10 +1,10 @@
 jsonValue -> object | array | string | boolean | number
 
-object -> "{" "\"" [a-zA-Z]:* "\"" ":" jsonValue "}" {% ([,,key,,,value]) => ({ [key.join('')]: value[0] }) %}
+object -> "{" string ":" jsonValue "}" {% ([,key,,value]) => ({ [key]: value[0] }) %}
 
 array -> "[" jsonValue "]" {% ([,val]) => val %}
 
-string -> "\"" [a-zA-Z]:* "\"" {% ([,str]) => str.join('') %}
+string -> "\"" [a-zA-Z0-9]:* "\"" {% ([,str]) => str.join('') %}
 
 boolean -> "true" {% () => true %} |
     "false" {% () => false %}
