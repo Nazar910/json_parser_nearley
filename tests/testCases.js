@@ -44,6 +44,14 @@ const testCases = [
             foo123: 'bar321'
         }
     },
+    {
+        jsonStr: '2.5',
+        expected: 2.5
+    },
+    {
+        jsonStr: '-2.5',
+        expected: -2.5
+    }
 ];
 
 module.exports = { testCases };
